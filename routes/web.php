@@ -36,11 +36,11 @@ Route::prefix('/admin/auth')->middleware('guest')->group(function () {
 
     Route::get('/register', [AdminAuthController::class, 'register']);
     Route::post('/doRegister', [AdminAuthController::class, 'doRegsiter']);
-    Route::get('/logout', [AdminAuthController::class, 'logout']);
 });
 
 
 Route::prefix('/admin')->middleware('auth')->group(function () {
+    Route::get('/logout', [AdminAuthController::class, 'logout']);
 
     Route::get('/dashboard', [AdminDashboardController::class, 'index']);
 

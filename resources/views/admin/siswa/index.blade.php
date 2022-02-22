@@ -26,6 +26,7 @@
     <tr>
       <th width="100px">No</th>
       <th>Judul</th>
+      <th>Nilai</th>
       <th width="150px">Action</th>
     </tr>
   </thead>
@@ -35,7 +36,18 @@
         
     <tr>
       <td width="50px">{{$loop->iteration}}</td>
-      <td><a href="/admin/siswa/{{$row->id}}"><b>{{$row->name}}</a></b> </td>
+      <td><b>{{$row->name}}</b> </td>
+      <td>
+        @if ($row->kelas->type == 'boolean')
+          {{persentase($row->nilai)}}
+            
+        @else
+          {{rerata($row->nilai)}}  
+        @endif
+            
+       
+      </td>
+      
       <td>
         <div class="btn-group">
             <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i></button>

@@ -21,10 +21,11 @@ class AdminSiswaController extends Controller
         $kelas_id = request('kelas_id');
 
         if ($cari) {
-            $siswa = Siswa::where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
+            $siswa = Siswa::with(['nilai', 'kelas'])->where('name', 'like', '%' . $cari . '%')->latest()->paginate(10);
         } else {
-            $siswa = Siswa::where('kelas_id', $kelas_id)->latest()->paginate(10);
+            $siswa = Siswa::with(['nilai', 'kelas'])->where('kelas_id', $kelas_id)->latest()->paginate(10);
         }
+        // dd($siswa);
         $data = [
             'title'   => 'Manajemen Siswa',
             'siswa' => $siswa,

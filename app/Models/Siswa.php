@@ -10,4 +10,14 @@ class Siswa extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+
+    function nilai()
+    {
+        return $this->hasMany(Nilai::class);
+    }
+
+    function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
 }

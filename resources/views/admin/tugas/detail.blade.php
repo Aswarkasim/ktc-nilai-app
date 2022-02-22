@@ -1,7 +1,7 @@
 <div class="row">
 
    <div class="col-md-5">
-     <a href="/admin/kelas/{{request('kelas_id')}}" class="btn btn-info mb-3"><i class="fa fa-arrow-left"></i> Kembali ke kelas</a>
+     <a href="/admin/tugas?kelas_id={{$tugas->kelas_id}}" class="btn btn-info mb-3"><i class="fa fa-arrow-left"></i> Kembali ke kelas</a>
     <div class="card p-3">
       <h5><b>List Siswa {{$tugas->name}}</b></h5>
 

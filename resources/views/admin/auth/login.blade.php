@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Log in</title>
+  <title>ANILAI</title>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
@@ -17,7 +17,7 @@
 <body class="hold-transition login-page" style="background-color:white">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Admin</b>LTE</a>
+    <a href="#"><b>A</b>NILAI</a>
   </div>
   <!-- /.login-logo -->
   <div class="card shadow">

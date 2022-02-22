@@ -69,17 +69,21 @@ class AdminSiswaController extends Controller
         $kelas_id = $request->kelas_id;
         $tugas = Tugas::where('kelas_id', $kelas_id)->get();
 
-        // foreach ($tugas as $item) {
-        //     $nilai = [
-        //         'tugas_id'  => $item->id,
-        //         'siswa_id'  => $siswa->id,
-        //         'nilai'     => 0,
-        //     ];
-        //     Nilai::create($nilai);
-        // }
+
+
+        if ($tugas) {
+            foreach ($tugas as $item) {
+                $nilai = [
+                    'tugas_id'  => $item->id,
+                    'siswa_id'  => $siswa->id,
+                    'nilai'     => 0,
+                ];
+                Nilai::create($nilai);
+            }
+        }
 
         Alert::success('Sukses', 'Siswa telah ditambahkan');
-        return redirect('/admin/siswa?kelas_id=' . $request->kelas_id);
+        return redirect('/admin/siswa/create?kelas_id=' . $request->kelas_id);
     }
 
     /**

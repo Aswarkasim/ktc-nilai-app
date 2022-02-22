@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="/img/ktc_logo_line.png" alt="AdminLTE Logo" width="15px" class="" style="opacity: .8"> 
-      <span class="brand-text font-weight-light">KTC FW</span>
+      <span class="brand-text font-weight-light">A Nilai</span>
     </a>
 
     <!-- Sidebar -->

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nilai;
 use App\Models\Siswa;
+use App\Models\Tugas;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -62,8 +64,20 @@ class AdminSiswaController extends Controller
             'name'              => 'required',
             'kelas_id'          => 'required'
         ]);
+        $siswa = Siswa::create($data);
 
-        Siswa::create($data);
+        $kelas_id = $request->kelas_id;
+        $tugas = Tugas::where('kelas_id', $kelas_id)->get();
+
+        // foreach ($tugas as $item) {
+        //     $nilai = [
+        //         'tugas_id'  => $item->id,
+        //         'siswa_id'  => $siswa->id,
+        //         'nilai'     => 0,
+        //     ];
+        //     Nilai::create($nilai);
+        // }
+
         Alert::success('Sukses', 'Siswa telah ditambahkan');
         return redirect('/admin/siswa?kelas_id=' . $request->kelas_id);
     }
@@ -131,6 +145,11 @@ class AdminSiswaController extends Controller
         $siswa = Siswa::find($id);
         $kelas_id = $siswa->kelas_id;
         $siswa->delete();
+        $nilai = Nilai::where('siswa_id', $id)->get();
+
+        foreach ($nilai as $item) {
+            $item->delete();
+        }
         Alert::success('Sukses', 'Siswa sukses dihapus');
         return redirect('/admin/siswa?kelas_id=' . $kelas_id);
     }

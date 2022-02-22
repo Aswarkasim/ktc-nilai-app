@@ -7,6 +7,24 @@
   {{-- <a href="/admin/kelas/{{request('kelas_id')}}" class="btn btn-info mb-3"><i class="fa fa-arrow-left"></i> Kembali ke kelas</a> --}}
     <a href="/admin/siswa/create?kelas_id={{request('kelas_id')}}" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
     <a href="/admin/tugas?kelas_id={{request('kelas_id')}}" class="btn btn-info mb-3"><i class="fas fa-file"></i> Tugas</a>
+
+    <div class="btn-group mb-3">
+      <button type="button" class="btn btn-secondary"><i class="fa fa-cogs"></i> Action Kelas</button>
+      <button type="button" class="btn btn-secondary dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="true">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu" role="menu" x-placement="bottom-start">
+        <a class="dropdown-item" href="/admin/kelas/{{request('kelas_id')}}/edit"><i class="fa fa-edit"></i> Edit</a>
+          <div class="dropdown-divider"></div>
+          <form action="/admin/kelas/{{request('kelas_id')}}" method="POST" id="form-delete" class="tombol-hapus">
+            @method('delete')
+            @csrf
+            <button type="submit" id="delete" class="dropdown-item"><i class="fa fa-trash"></i> Hapus</button>
+          </form>
+      </div>
+    </div>
+
+
     @endif
 
   <div class="float-right">

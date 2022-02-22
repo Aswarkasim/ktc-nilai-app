@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
+use App\Models\Nilai;
+use App\Models\Siswa;
 use App\Models\Tugas;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -150,6 +152,20 @@ class AdminKelasController extends Controller
         //
         $kelas = Kelas::find($id);
         $kelas->delete();
+
+        $siswa = Siswa::where('kelas_id', $id)->get();
+        foreach ($siswa as $item) {
+            $nilai = Nilai::where('siswa_id', $id)->get();
+            foreach ($nilai as $n) {
+                $n->delete();
+            }
+            $item->delete();
+        }
+
+        $tugas = Tugas::where('kelas_id', $id)->get();
+        foreach ($tugas as $t) {
+            $t->delete();
+        }
         Alert::success('Sukses', 'Kelas sukses dihapus');
         return redirect('/admin/kelas');
     }

@@ -25,6 +25,8 @@
       <a href="/admin/kelas/{{$item->id}}">
         <div class="card-list rounded p-2">
           <p class="nama-judul mt-3"><b> {{$item->name}} </b></p>
+         
+            
         </div>
       </a>
     </div>

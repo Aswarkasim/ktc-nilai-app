@@ -21,7 +21,7 @@
   <div class="row">
     @foreach ($tugas as $item)
         
-    <div class="col-md-3">
+    <div class="col-md-3 mb-2">
       <a href="/admin/tugas/{{$item->id}}">
         <div class="card-list rounded p-2">
           <p class="nama-judul mt-3"><b> {{$item->name}} </b></p>

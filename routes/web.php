@@ -13,6 +13,7 @@ use App\Http\Controllers\AdminBannerController;
 use App\Http\Controllers\AdminCategoryPostController;
 use App\Http\Controllers\AdminConfigurationController;
 use App\Http\Controllers\AdminDashboardController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,12 +26,12 @@ use App\Http\Controllers\AdminDashboardController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [AdminAuthController::class, 'index'])->middleware('guest');
 
 
 
-Route::prefix('/admin/auth')->group(function () {
-    Route::get('/', [AdminAuthController::class, 'index'])->middleware('guest')->name('login');
+Route::prefix('/admin/auth')->middleware('guest')->group(function () {
+    Route::get('/', [AdminAuthController::class, 'index'])->name('login');
     Route::post('/login', [AdminAuthController::class, 'login']);
 
     Route::get('/register', [AdminAuthController::class, 'register']);
@@ -68,3 +69,9 @@ Route::prefix('/home')->group(function () {
     // Route::resource('/mitra', HomeMitraController::class);;
     // Route::resource('/layanan', HomeLayananController::class);;
 });
+
+/*
+u8939991_anilai
+~8]=zY_B$@FD
+
+*/
